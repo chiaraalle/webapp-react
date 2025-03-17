@@ -5,9 +5,11 @@ function Header() {
     <header>
       <nav className="navbar">
         <div className="nav-container">
-            <a className="" href="#" > Home </a>
-            <a className="" href="#">About</a>
-            
+        <NavLink className="nav-item nav-link" to="/">Home</NavLink>
+        <NavLink className="nav-item nav-link" to="/movie">Movie</NavLink>
+        
+            {/* <a className="" href="#" > Home </a>
+            <a className="" href="#">Movies</a>*/}
         </div>  
 
       </nav>

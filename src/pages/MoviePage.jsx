@@ -1,0 +1,8 @@
+export default function MoviePage(){
+    return(
+        <>
+        <h1>Titolo singolo film</h1>
+    
+        </>
+    )
+}
