@@ -11,7 +11,7 @@ export default function MovieCard({ movie }) {
         <span>Diretto da: {director}</span>
         <p>Genere: {genre}</p>
         <p>{abstract}</p>
-        <Link to={`/movies/${id}`} className="btn btn-primary">Leggi di più</Link>
+        <Link to={`/movies/${movie.id}`}>Read More</Link>
       </div>
     </div>
   );
