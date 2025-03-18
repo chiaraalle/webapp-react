@@ -4,6 +4,9 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import HomePage from './pages/Home';
 import MoviePage from './pages/MoviePage';
 
+
+
+
 function App() {
   
 
