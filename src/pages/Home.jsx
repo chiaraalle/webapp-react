@@ -1,20 +1,52 @@
+import MovieCard from '../components/MovieCard';
+// import ReviewCard from "../components/ReviewCard";
 import axios from 'axios';
-import { useEffect, useState } from 'react';
-import MovieCard from '../components/MovieCard.jsx';
+import { useState, useEffect } from 'react';
 
-export default function HomePage() {
-    const [movies, setMovies] = useState([]);
+export default function Home() {
+  const [movies, setMovies] = useState([]);
 
-    
-    useEffect(() => {
-      axios.get('http://localhost:3000/movies')
-      .then(res => setMovies(res.data))
-      .catch(error => console.log(error));
-    }, []);
-  
-    return (
+
+  const fetchMovies = () => {
+    console.log('Fetching movies...');
+
+    axios
+      .get('http://localhost:3000/movies')
+      .then((res) => {
+        setMovies(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const renderMovies= () => {
+    return movies.map((movie) => {
+      return (
+        <div className="col" key={movie.id}>
+          <MovieCard movie={movie} />
+        </div>
+      );
+    });
+  };
+
+  useEffect(fetchMovies, []);
+
+  return (
+    <>
+      <h1 className="text-primary">Bool Movies</h1>
       <div className="row row-cols-3">
-        {movies.map(movie => <MovieCard key={movie.id} movie={movie} />)}
+        {/* <MovieCard/> */}
+        {renderMovies()}
+
+        {/* {movies.map((movie) => {
+          return (
+            <div className="col" key={movie.id}>
+              <MovieCard movie={movie} />
+            </div>
+          );
+        })} */}
       </div>
-    );
-  }
+    </>
+  );
+}
