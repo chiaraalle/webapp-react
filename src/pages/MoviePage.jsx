@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import ReviewCard from '../components/ReviewCard';
+import ReviewForm from '../components/ReviewForm';
 
 export default function MoviePage() {
   const { id } = useParams();
@@ -17,6 +18,7 @@ export default function MoviePage() {
   };
 
   useEffect(fetchMovie, [id]);
+
 
   const renderReviews = () => {
     return movie.reviews?.map((review) => {
@@ -34,6 +36,12 @@ export default function MoviePage() {
         <h4>Our community reviews</h4>
         {renderReviews()}
       </section>
+
+      {/* //form review */}
+      <section>
+        {movie?.id && <ReviewForm movie_id={movie.id} reloadReviews={fetchMovie} />}
+      </section>
     </>
+
   );
 }
